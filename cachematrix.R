@@ -1,7 +1,10 @@
-## Put comments here that give an overall description of what your
-## functions do
+## These functions demonstrate the utilization of scoping in R
+## by caching a matrix and its inverse within a single object.
 
-## Write a short comment describing this function
+## This function will create a cached matrix and the ability to store
+## its inverse. It allows the end user and related functions to retrieve
+## and set the values for the cached matrix and its inverse. Changing
+## the matrix using the $set function will reset the inverse matrix to Null.
 
 makeCacheMatrix <- function(x = matrix()) {
 	mInv <- NULL
@@ -18,12 +21,14 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
+## This function checks the cached matrix for a cached inverse and,
+## if it finds one, returns it. If no inverse matrix is cached it will
+## create one.
 
 cacheSolve <- function(x, ...) {
 	mInv <- x$getmInv()
 	if(!is.null(mInv)) {
-		message("getting cached inverse matrix")
+		message("Getting cached inverse matrix")
 		return (mInv)
 	}
       mInv <- solve(x$get())
